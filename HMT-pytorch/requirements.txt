@@ -1,0 +1,12 @@
+transformers
+tensorboard
+rouge_score
+accelerate
+datasets
+nltk
+six
+matplotlib
+torch
+torchvision
+peft
+tqdm

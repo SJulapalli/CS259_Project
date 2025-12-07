@@ -13,5 +13,4 @@ __pycache__/
 
 # Specific Directories
 hmt_model/
-HMT-pytorch/
 .cache/
