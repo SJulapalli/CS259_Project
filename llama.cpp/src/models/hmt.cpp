@@ -69,7 +69,7 @@ llm_build_hmt::llm_build_hmt(const llama_model & model, const llm_graph_params &
     // printf("cur_pos shape: %ld %ld %ld %ld\n", cur_pos->ne[0], cur_pos->ne[1], cur_pos->ne[2], cur_pos->ne[3]);
 
     // Loop 1: Run backbone to get the summary of the current segment.
-    for (int il = 0; il < n_layer; ++il) {
+    for (int il = 0; il < 1; ++il) {
         ggml_tensor * inpSA = cur;
 
         cur = build_norm(cur, model.layers[il].attn_norm, NULL, LLM_NORM_RMS, il);

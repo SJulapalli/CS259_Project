@@ -2450,6 +2450,7 @@ class HMTModel(LlamaModel):
         super().set_gguf_parameters()
 
     def modify_tensors(self, data_torch: Tensor, name: str, bid: int | None) -> Iterable[tuple[str, Tensor]]:
+        print(name)
         match name:
             case "cross_attn.wq.weight":
                 return [("hmt.cross_attn_q.weight", data_torch)]
