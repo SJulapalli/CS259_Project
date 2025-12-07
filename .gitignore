@@ -1,0 +1,17 @@
+# Models and Large Files
+*.safetensors
+*.gguf
+*.pth
+*.bin
+
+# Environment and Build
+.DS_Store
+.venv/
+build/
+__pycache__/
+*.pyc
+
+# Specific Directories
+hmt_model/
+HMT-pytorch/
+.cache/
