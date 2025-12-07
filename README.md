@@ -12,6 +12,7 @@ that actually has to do with running/training the model out, so it'll just set u
 
 when doing the conversion from safetensors to gguf, you need to have a separate directory with the safetensors file and the tokenizer.json, tokenizer_config.json, special_tokens_map.json, and config.json files from the original llama 3.2 1b model. We basically inherit all of those properties since we use llama 3.2 1b as our base model.
 
+Display this file in raw to actually see the file structure
 
 SafeTensors Explorer - hmt_model/model.safetensors (1/1)
 Use ↑/↓ to navigate, Enter/Space to expand/collapse, / to search, q to quit
