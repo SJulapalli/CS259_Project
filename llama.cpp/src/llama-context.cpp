@@ -223,7 +223,6 @@ llama_context::llama_context(const llama_model & model, llama_context_params par
     if (model.arch == LLM_ARCH_HMT && model.hmt_initial_memory != nullptr &&
         model.hmt_initial_memory->data != nullptr) {
         int32_t n_embd = model.hparams.n_embd;
-        // int32_t mem_size = hmt_mem_size;
 
         struct ggml_init_params params_hmt = {
             ggml_tensor_overhead() * 2,
@@ -243,9 +242,6 @@ llama_context::llama_context(const llama_model & model, llama_context_params par
         this->hmt_memory_buffer->data   = ggml_backend_buffer_get_base(this->hmt_backend_buffer);
 
         ggml_backend_tensor_copy(model.hmt_initial_memory, this->hmt_memory_buffer);
-
-        // this->hmt_mem_size  = mem_size;
-        // this->hmt_mem_index = 0;
     }
 
     // init backends
@@ -847,12 +843,6 @@ llm_graph_result * llama_context::process_ubatch(const llama_ubatch &     ubatch
         LLAMA_LOG_ERROR("%s: failed to compute graph, compute status: %d\n", __func__, status);
         ret = status;
         return nullptr;
-    }
-
-    // HMT Memory Index Update
-    if (model.arch == LLM_ARCH_HMT && this->hmt_memory_buffer) {
-        this->hmt_mem_index = (this->hmt_mem_index + 1) % this->hmt_mem_size;
-        // LLAMA_LOG_INFO("HMT Memory index updated to %d\n", this->hmt_mem_index);
     }
 
     ret = GGML_STATUS_SUCCESS;

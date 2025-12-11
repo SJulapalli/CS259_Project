@@ -50,10 +50,6 @@ struct llama_context {
     struct ggml_context * hmt_ctx            = nullptr;
     struct ggml_tensor *  hmt_memory_buffer  = nullptr;
     ggml_backend_buffer_t hmt_backend_buffer = nullptr;
-    struct ggml_tensor *  hmt_index_tensor   = nullptr;
-    int32_t               hmt_mem_index      = 0;
-    // HMT Default is 100, needs to match whatever the model was trained to utilize for best performance.
-    int32_t               hmt_mem_size       = 100;
 
     uint32_t n_threads() const;
     uint32_t n_threads_batch() const;
